@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <style>
+        .design{
+            
+            display: flex;
+            justify-content: center; align-items: center;
+            height:100vh; 
+        }
+        .box{
+            background-color: brown;
+            height: 300px;
+            width:300px;
+            color: white;
+            display: flex;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class='design'>
+        <div class="box"></div>
+    </div>
+
+
+    <script>
+
+        const get_clock = document.getElementsByClassName('box')[0];
+ 
+         setInterval(()=>{
+            const time = new Date();
+        
+            get_clock.innerHTML = time.toISOString();
+         },1000)
+    </script>
+</body>
+</html>

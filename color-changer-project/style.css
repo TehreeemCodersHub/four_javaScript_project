@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    padding-top: 50px;
+    justify-content: space-around;
+}
+#box_yellow {
+    height: 80px;
+    width: 80px;
+    background-color: yellow;
+    border-style: solid;
+  }
+
+#box_green {
+    height: 80px;
+    width: 80px;
+    border-style: solid;
+    background-color: green;
+  }
+
+#box_red {
+    height: 80px;
+    width: 80px;
+    border-style: solid;
+    background-color: red;
+  }
+  
+#box_blue {
+    height: 80px;
+    width: 80px;
+    border-style: solid;
+    background-color: blue;
+  }
+  

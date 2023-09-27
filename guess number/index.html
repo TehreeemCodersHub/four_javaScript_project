@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Guess Number</title>
+    <style>
+        .input {
+            margin-top: 12px;
+            margin-bottom: 12px ;
+        }
+        .center {
+            display: flex;
+            flex-direction: column;
+            /* height: 100vh; */
+            /* justify-content: center; */
+            align-items: center;
+            background-color: black;
+        }
+        .text {
+            color: white;
+        }
+        .guess {
+            margin-bottom: 0px;
+        }
+        .submit {
+            margin-bottom: 6px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="center">
+        <h1 class="text" >Guess Number </h1>
+  <form id="myform">
+    <input placeholder="Enter Number" class="input" /> 
+   <center> <input type="submit" class="submit" value="Guess number" >  </center>
+   <span class="error_msg"></span> 
+  </form>
+
+  <h3 class="guess text"> prevs Guess Number:  </h3>
+  <h3 class="remain text">Total Attempts:  </h3>
+
+    </div>
+    
+<script>
+    const genrate_number = parseInt(Math.random()*100 + 1);
+    console.log(genrate_number);
+    const get_input = document.querySelector('input');
+    const submit_button = document.querySelector('.submit');
+    const user_guess = document.querySelector('h3');
+    const remaining = user_guess.nextElementSibling;
+    
+    let user_guess_array = [];
+    let attempt = 0;
+    let playGame = true;
+
+
+    function play() {
+        if(get_input.value <=0  || get_input.value > 100 || isNaN(get_input.value) ) {
+           document.querySelector('.error_msg').textContent = "Enter valid number";
+           document.querySelector('.error_msg').style.color = "white";
+           return 
+        }
+        // debugger;
+        document.querySelector('.error_msg').textContent = "";
+
+        const convert_input = parseInt(get_input.value)
+        
+        if(genrate_number === convert_input) {
+            document.querySelector('.error_msg').textContent = "Congratulation😍 you win";
+           document.querySelector('.error_msg').style.color = "white";
+           remaining.innerHTML = `Remaining Attempts: ${10-attempt}`;
+
+        }  
+        else {
+            if(attempt >=9) {
+                submit_button.setAttribute('disabled','')
+            }
+        attempt+=1;
+        user_guess_array.push(get_input.value);
+        user_guess.innerHTML = `previous Guess:  ${user_guess_array}`;
+        remaining.innerHTML = `Attempt: ${attempt}`;
+       }
+
+
+
+    }
+
+
+    submit_button.addEventListener("click", (event) => {
+        event.preventDefault();
+        setTimeout(()=>{document.getElementById("myform").reset()},2000)
+        play();
+    
+    });  
+
+
+
+    //    document.createElement('span');
+//  console.log(user_guess.innerHTML= `<span>previous Guess: ok <span>`);
+
+</script>
+
+</body>
+</html>
